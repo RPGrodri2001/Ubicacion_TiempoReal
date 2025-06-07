@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css 3/style.css">
+    <title>GeoTracker Pro - Ubicación en Tiempo Real</title>
+    
+    <!-- CSS EXTERNO: Leaflet para mapas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body>
+    <!-- PARTÍCULAS DECORATIVAS DE FONDO -->
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <!-- HEADER: Título y subtítulo -->
+        <header class="header">
+            <h1 class="logo">GeoTracker Pro</h1>
+            <p class="subtitle">Sistema de Geolocalización en Tiempo Real</p>
+        </header>
+
+        <!-- DASHBOARD: Grid principal con 3 secciones -->
+        <div class="dashboard">
+            
+            <!-- SECCIÓN 1: Estado de Ubicación -->
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <!-- Icono SVG para ubicación -->
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    Estado de Ubicación
+                    <!-- Indicador de estado (activo/inactivo) -->
+                    <span class="status-indicator" id="statusIndicator"></span>
+                </h2>
+                
+                <!-- Contenedor dinámico para información de ubicación -->
+                <div class="location-info" id="locationInfo">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <span>Obteniendo ubicación...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: Información del Lugar -->
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <!-- Icono SVG para lugar -->
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Información de Lugar
+                    <!-- Indicador de estado para geocodificación -->
+                    <span class="status-indicator" id="addressStatusIndicator"></span>
+                </h2>
+                
+                <!-- Contenedor dinámico para información de dirección -->
+                <div class="location-info" id="addressInfo">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <span>Obteniendo dirección...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: Mapa Interactivo -->
+            <div class="glass-card">
+                <h2 class="card-title">
+                    <!-- Icono SVG para mapa -->
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    </svg>
+                    Mapa en Tiempo Real
+                </h2>
+                <!-- Contenedor del mapa (Leaflet se renderiza aquí) -->
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTROLES: Botones de acción -->
+        <div class="controls">
+            <button class="btn btn-primary" onclick="getCurrentLocation()">
+                Actualizar Ubicación
+            </button>
+            <button class="btn btn-secondary" onclick="toggleTracking()" id="trackingBtn">
+                Iniciar Seguimiento
+            </button>
+            <button class="btn btn-accent" onclick="shareLocation()">
+                Compartir Ubicación
+            </button>
+            <button class="btn btn-primary" onclick="clearRoute()" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);">
+                Limpiar Ruta
+            </button>
+        </div>
+
+        <!-- ESTADÍSTICAS: Cards con métricas en tiempo real -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="accuracyValue">--</div>
+                <div class="stat-label">Precisión (metros)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="updateCount">0</div>
+                <div class="stat-label">Actualizaciones</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="lastUpdate">--</div>
+                <div class="stat-label">Última Actualización</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="currentCountry">--</div>
+                <div class="stat-label">País Actual</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS EXTERNOS -->
+    <!-- JavaScript de Leaflet para funcionalidad de mapas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+</body>
+<script src="./js/main.js"></script>
+</html>
