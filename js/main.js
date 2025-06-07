@@ -152,32 +152,28 @@ function initializeMap() {
 ======================================== */
 
 function getCurrentLocation() {
-    console.log('📍 Solicitando ubicación del usuario...');
+    console.log('📍 Verificando soporte de geolocalización...');
     
-    // VERIFICAR COMPATIBILIDAD DEL NAVEGADOR
-    // Algunos navegadores muy antiguos no soportan geolocalización
     if (!navigator.geolocation) {
-        console.error('❌ Navegador no soporta geolocalización');
-        showError('Tu navegador no soporta geolocalización');
-        return;  // Salir de la función si no hay soporte
+        showError('❌ Tu navegador no soporta geolocalización');
+        return;
     }
 
-    // CONFIGURACIÓN PARA MÁXIMA PRECISIÓN
-    const options = {
-        enableHighAccuracy: true,    // Usar GPS en lugar de redes WiFi (más preciso pero consume más batería)
-        timeout: 10000,             // Máximo 10 segundos de espera antes de dar timeout
-        maximumAge: 0               // No usar ubicaciones guardadas en caché (siempre obtener nueva)
-    };
-
-    console.log('🔍 Configuración GPS:', options);
-
-    // 🌐 LLAMADA A LA GEOLOCATION API DEL NAVEGADOR
-    // Esta es una de las APIs más importantes de la aplicación
-    navigator.geolocation.getCurrentPosition(
-        handleLocationSuccess,       // Función que se ejecuta SI se obtiene ubicación exitosamente
-        handleLocationError,         // Función que se ejecuta SI hay algún error
-        options                     // Configuraciones definidas arriba
-    );
+    // VERIFICAR PERMISOS PRIMERO
+    if (navigator.permissions) {
+        navigator.permissions.query({name: 'geolocation'}).then(function(result) {
+            console.log('🔐 Estado de permisos:', result.state);
+            
+            if (result.state === 'denied') {
+                showPermissionHelp();
+            } else {
+                requestLocation();
+            }
+        });
+    } else {
+        // Fallback para navegadores sin Permissions API
+        requestLocation();
+    }
     
     // En este punto la función termina, pero las callbacks se ejecutarán
     // de forma asíncrona cuando el navegador obtenga (o falle) la ubicación
@@ -1147,3 +1143,44 @@ async function getWeatherData(lat, lng) {
     }
 }
 
+// NUEVA FUNCIÓN: Mostrar ayuda de permisos
+function showPermissionHelp() {
+    const locationInfo = document.getElementById('locationInfo');
+    locationInfo.innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+            <h3 style="color: #E53E3E; margin-bottom: 16px;">
+                🔒 Permisos de Ubicación Requeridos
+            </h3>
+            <p style="margin-bottom: 16px; color: #4A5568;">
+                Para usar esta aplicación, necesitas permitir el acceso a tu ubicación.
+            </p>
+            <div style="background: rgba(229, 62, 62, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+                <p style="font-weight: 600; margin-bottom: 8px;">🛠️ Cómo activar permisos:</p>
+                <ol style="text-align: left; color: #4A5568;">
+                    <li>Haz click en el <strong>🔒 candado</strong> junto a la URL</li>
+                    <li>Busca <strong>"Ubicación"</strong></li>
+                    <li>Cambia a <strong>"Permitir"</strong></li>
+                    <li>Recarga la página</li>
+                </ol>
+            </div>
+            <button onclick="requestLocation()" class="btn btn-primary">
+                🔄 Intentar de nuevo
+            </button>
+        </div>
+    `;
+}
+
+// NUEVA FUNCIÓN: Solicitar ubicación
+function requestLocation() {
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+    };
+
+    navigator.geolocation.getCurrentPosition(
+        handleLocationSuccess,
+        handleLocationError,
+        options
+    );
+}
