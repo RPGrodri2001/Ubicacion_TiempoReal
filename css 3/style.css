@@ -1,432 +1,893 @@
 /* ========================================
-   RESET Y CONFIGURACIÓN BASE
+   🎨 GEOTRACKER PRO - CSS CELESTE PASTEL
+   ========================================
+   
+   🌊 PALETA CELESTE AMIGABLE:
+   - Fondo base: #E6F3FF (celeste pastel suave)
+   - Acentos: #B3E0FF (celeste medio)
+   - Contrastes: #CCE7FF (celeste claro)
+   - Complementos: #F0F8FF (casi blanco azulado)
+   - Texto oscuro: #1A365D (azul marino suave)
+   - Texto medio: #2D3748 (gris azulado)
+   
+   ✨ CARACTERÍSTICAS:
+   - Fondo celeste relajante y profesional
+   - Alto contraste para máxima legibilidad
+   - Colores complementarios armoniosos
+   - Diseño amigable y no agresivo
+   - Optimizado para lectura prolongada
+   
+======================================== */
+
+/* ========================================
+   🔄 RESET Y CONFIGURACIÓN BASE
+   ========================================
+   Elimina estilos por defecto del navegador
+   y establece una base consistente
 ======================================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* VARIABLES CSS PARA DESIGN SYSTEM */
-:root {
-    /* Gradientes principales */
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    
-    /* Efectos de vidrio (Glassmorphism) */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    
-    /* Colores de texto */
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    
-    /* Sombras */
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 0;                    /* Eliminar márgenes por defecto */
+    padding: 0;                   /* Eliminar padding por defecto */
+    box-sizing: border-box;       /* Incluir borde y padding en el ancho total */
 }
 
 /* ========================================
-   FONDO ANIMADO DE LA APLICACIÓN
+   🎨 VARIABLES CSS - SISTEMA CELESTE
+   ========================================
+   Variables optimizadas para fondo celeste
+   con máximo contraste y legibilidad
+======================================== */
+:root {
+    /* 🌊 COLORES BASE CELESTE */
+    --celeste-base: #E6F3FF;         /* Celeste pastel principal - fondo base */
+    --celeste-light: #F0F8FF;        /* Celeste muy claro - elementos claros */
+    --celeste-medium: #CCE7FF;       /* Celeste medio - acentos */
+    --celeste-accent: #B3E0FF;       /* Celeste vibrante - elementos importantes */
+    --celeste-deep: #99D6FF;         /* Celeste profundo - hover states */
+
+    /* 🌈 GRADIENTES CELESTE ARMONIOSOS */
+    --primary-gradient: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 50%, #CCE7FF 100%);
+    /* Celeste muy claro → base → medio */
+    
+    --secondary-gradient: linear-gradient(135deg, #B3E0FF 0%, #CCE7FF 50%, #E6F3FF 100%);
+    /* Celeste vibrante → medio → base */
+    
+    --accent-gradient: linear-gradient(135deg, #99D6FF 0%, #B3E0FF 100%);
+    /* Celeste profundo → vibrante */
+    
+    --soft-gradient: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%);
+    /* Gradiente muy suave para fondos */
+
+    /* 🪟 GLASSMORPHISM OPTIMIZADO PARA CELESTE */
+    --glass-bg: rgba(255, 255, 255, 0.4);           /* Fondo blanco translúcido */
+    --glass-bg-strong: rgba(255, 255, 255, 0.6);    /* Fondo más opaco */
+    --glass-border: rgba(255, 255, 255, 0.5);       /* Borde blanco suave */
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* Sombra muy sutil */
+
+    /* 📝 COLORES DE TEXTO OPTIMIZADOS */
+    --text-primary: #1A365D;         /* Azul marino - máximo contraste */
+    --text-secondary: #2D3748;       /* Gris azulado oscuro - buen contraste */
+    --text-muted: #4A5568;           /* Gris medio - para labels */
+    --text-light: #718096;           /* Gris claro - elementos secundarios */
+    --text-white: #FFFFFF;           /* Blanco puro - para contraste máximo */
+    
+    /* 🎯 COLORES DE ESTADO AMIGABLES */
+    --success-color: #38A169;        /* Verde amigable (no muy brillante) */
+    --error-color: #E53E3E;          /* Rojo suave pero visible */
+    --warning-color: #D69E2E;        /* Amarillo anaranjado amigable */
+    --info-color: #3182CE;           /* Azul información (complementa celeste) */
+
+    /* 📏 ESPACIADO Y MEDIDAS */
+    --border-radius-sm: 8px;         /* Radio pequeño */
+    --border-radius-md: 12px;        /* Radio medio */
+    --border-radius-lg: 20px;        /* Radio grande */
+    --border-radius-xl: 24px;        /* Radio extra grande */
+    
+    /* 🌟 SOMBRAS SUAVES PARA CELESTE */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);    /* Sombra muy suave */
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);  /* Sombra media */
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.12); /* Sombra fuerte */
+}
+
+/* ========================================
+   🌊 FONDO CELESTE PRINCIPAL
+   ========================================
+   Fondo celeste pastel relajante y profesional
 ======================================== */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Fondo con gradiente animado */
-    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    min-height: 100vh;
-    color: var(--text-primary);
-    overflow-x: hidden;
-}
-
-/* ANIMACIÓN DEL GRADIENTE DE FONDO */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    /* 📚 FUENTE OPTIMIZADA PARA LEGIBILIDAD */
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Inter tiene excelente legibilidad en fondos claros */
+    
+    /* 🌊 FONDO CELESTE PASTEL SÓLIDO */
+    background: var(--celeste-base);
+    /* Fondo sólido celeste - más profesional y menos distractivo */
+    
+    /* 📐 LAYOUT Y ESPACIADO */
+    min-height: 100vh;              /* Altura mínima de toda la ventana */
+    color: var(--text-primary);     /* Color de texto principal (azul marino) */
+    overflow-x: hidden;             /* Evitar scroll horizontal */
+    
+    /* 🎯 SUAVIZADO DE FUENTES PARA MÁXIMA LEGIBILIDAD */
+    -webkit-font-smoothing: antialiased;      /* Suavizar fuentes en webkit */
+    -moz-osx-font-smoothing: grayscale;       /* Suavizar fuentes en Firefox */
+    text-rendering: optimizeLegibility;       /* Optimizar para legibilidad */
+    
+    /* 📖 MEJORAS DE LECTURA */
+    line-height: 1.6;               /* Altura de línea cómoda para leer */
+    letter-spacing: 0.02em;         /* Espaciado muy sutil entre letras */
 }
 
 /* ========================================
-   LAYOUT PRINCIPAL
+   📦 CONTENEDOR PRINCIPAL
+   ========================================
+   Wrapper que centra todo el contenido
 ======================================== */
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
+    max-width: 1400px;           /* Ancho máximo para pantallas grandes */
+    margin: 0 auto;              /* Centrar horizontalmente */
+    padding: 20px;               /* Espacio interno */
+    position: relative;          /* Para posicionar elementos hijos */
 }
 
 /* ========================================
-   HEADER - TÍTULO PRINCIPAL
+   🏆 HEADER - TÍTULO PRINCIPAL
+   ========================================
+   Sección superior con logo y subtítulo
+   optimizada para fondo celeste
 ======================================== */
 .header {
-    text-align: center;
-    margin-bottom: 30px;
-    animation: fadeInDown 1s ease-out;
+    text-align: center;              /* Centrar texto */
+    margin-bottom: 40px;             /* Espacio inferior generoso */
+    animation: smoothFadeInDown 1.2s ease-out; /* Animación de entrada suave */
 }
 
-@keyframes fadeInDown {
+/* 🎭 ANIMACIÓN DE ENTRADA DEL HEADER */
+@keyframes smoothFadeInDown {
     from {
-        opacity: 0;
-        transform: translateY(-50px);
+        opacity: 0;                  /* Empezar invisible */
+        transform: translateY(-30px); /* Empezar 30px arriba */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;                  /* Terminar visible */
+        transform: translateY(0);     /* Terminar en posición normal */
     }
 }
 
+/* 🎨 LOGO PRINCIPAL CON GRADIENTE CELESTE */
 .logo {
-    font-size: 3rem;
-    font-weight: 800;
-    /* Texto con gradiente */
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 10px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: 3.5rem;              /* Tamaño grande pero no abrumador */
+    font-weight: 800;               /* Muy negrita para impacto */
+    background: var(--accent-gradient); /* Gradiente celeste profundo */
+    
+    /* 🌈 TEXTO CON GRADIENTE CELESTE */
+    -webkit-background-clip: text;   /* Recortar fondo al texto (webkit) */
+    -webkit-text-fill-color: transparent; /* Hacer texto transparente (webkit) */
+    background-clip: text;           /* Recortar fondo al texto (estándar) */
+    
+    margin-bottom: 12px;            /* Espacio inferior */
+    
+    /* 🌟 SOMBRA AZUL SUTIL */
+    filter: drop-shadow(0 4px 12px rgba(26, 54, 93, 0.15)); /* Sombra azul suave */
+    
+    /* 📱 RESPONSIVE */
+    line-height: 1.1;               /* Altura de línea ajustada */
 }
 
+/* 💬 SUBTÍTULO CON EXCELENTE CONTRASTE */
 .subtitle {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    font-weight: 300;
+    font-size: 1.3rem;              /* Tamaño legible */
+    color: var(--text-secondary);   /* Gris azulado oscuro - buen contraste */
+    font-weight: 500;               /* Peso medio para legibilidad */
+    letter-spacing: 0.5px;          /* Espaciado de letras sutil */
 }
 
 /* ========================================
-   DASHBOARD - GRID PRINCIPAL
+   📊 DASHBOARD - GRID PRINCIPAL
+   ========================================
+   Sistema de grid que organiza los 3 paneles principales
 ======================================== */
 .dashboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr; /* 3 columnas: ubicación, lugar, mapa */
-    gap: 30px;
-    margin-bottom: 30px;
+    display: grid;                           /* Usar CSS Grid */
+    grid-template-columns: 1fr 1fr 2fr;     /* 3 columnas: 1+1+2 = 4 partes */
+    gap: 30px;                              /* Espacio entre elementos */
+    margin-bottom: 40px;                    /* Espacio inferior */
+    
+    /* 🎭 ANIMACIÓN DE ENTRADA */
+    animation: smoothFadeInUp 1s ease-out 0.3s both; /* Delay de 0.3s */
 }
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 1200px) {
-    .dashboard {
-        grid-template-columns: 1fr 1fr; /* 2 columnas en tablets */
-    }
-}
-
-@media (max-width: 768px) {
-    .dashboard {
-        grid-template-columns: 1fr; /* 1 columna en móviles */
-    }
-}
-
-/* ========================================
-   CARDS CON EFECTO GLASSMORPHISM
-======================================== */
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px); /* Efecto de vidrio esmerilado */
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
+/* 🎭 ANIMACIÓN DE ENTRADA DEL DASHBOARD */
+@keyframes smoothFadeInUp {
     from {
-        opacity: 0;
-        transform: translateY(50px);
+        opacity: 0;                  /* Empezar invisible */
+        transform: translateY(30px); /* Empezar 30px abajo */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;                  /* Terminar visible */
+        transform: translateY(0);     /* Terminar en posición normal */
     }
 }
 
-/* EFECTO HOVER EN CARDS */
-.glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+/* 📱 RESPONSIVE DESIGN PARA TABLETS */
+@media (max-width: 1200px) {
+    .dashboard {
+        grid-template-columns: 1fr 1fr;  /* 2 columnas en tablets */
+        gap: 25px;                       /* Espacio ligeramente menor */
+    }
+}
+
+/* 📱 RESPONSIVE DESIGN PARA MÓVILES */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;      /* 1 columna en móviles */
+        gap: 20px;                       /* Espacio menor */
+    }
+    
+    .logo {
+        font-size: 2.8rem;              /* Tamaño menor en móvil */
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;              /* Subtítulo menor en móvil */
+    }
 }
 
 /* ========================================
-   TÍTULOS DE CARDS
+   🪟 CARDS CON GLASSMORPHISM CELESTE
+   ========================================
+   Tarjetas con efecto de vidrio optimizado
+   para fondo celeste
+======================================== */
+.glass-card {
+    /* 🌊 GLASSMORPHISM OPTIMIZADO PARA CELESTE */
+    background: var(--glass-bg-strong);     /* Fondo blanco translúcido */
+    backdrop-filter: blur(15px);            /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(15px);    /* Soporte Safari */
+    
+    /* 🎨 BORDES Y FORMAS */
+    border: 2px solid var(--glass-border);  /* Borde blanco más visible */
+    border-radius: var(--border-radius-lg); /* Bordes redondeados grandes */
+    
+    /* 📏 ESPACIADO */
+    padding: 32px;                          /* Espacio interno generoso */
+    
+    /* 🌟 SOMBRAS SUAVES */
+    box-shadow: var(--shadow-medium);       /* Sombra media para profundidad */
+    
+    /* 🎭 TRANSICIONES SUAVES */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición personalizada */
+    
+    /* 🎬 ANIMACIÓN DE ENTRADA */
+    animation: smoothFadeInUp 1s ease-out 0.6s both; /* Delay mayor */
+    
+    /* 📍 POSICIONAMIENTO */
+    position: relative;                     /* Para pseudo-elementos */
+    overflow: hidden;                       /* Ocultar desbordamientos */
+}
+
+/* ✨ EFECTO HOVER SUAVE EN CARDS */
+.glass-card:hover {
+    /* 🚀 ELEVACIÓN SUTIL */
+    transform: translateY(-6px) scale(1.01); /* Subir y crecer muy poco */
+    
+    /* 🌟 SOMBRA MÁS PROFUNDA */
+    box-shadow: var(--shadow-strong);        /* Sombra intensa */
+    
+    /* 🌈 FONDO MÁS BRILLANTE */
+    background: rgba(255, 255, 255, 0.7);    /* Más opaco en hover */
+    
+    /* 🎨 BORDE MÁS VISIBLE */
+    border-color: rgba(255, 255, 255, 0.8);  /* Borde más fuerte */
+}
+
+/* ========================================
+   🏷️ TÍTULOS DE CARDS CON BUEN CONTRASTE
+   ========================================
+   Headers de cada sección con iconos
 ======================================== */
 .card-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 1.4rem;                    /* Tamaño legible */
+    font-weight: 700;                     /* Negrita para buen contraste */
+    margin-bottom: 24px;                  /* Espacio inferior */
+    color: var(--text-primary);          /* Azul marino - máximo contraste */
+    
+    /* 📐 LAYOUT */
+    display: flex;                        /* Flexbox para alinear */
+    align-items: center;                  /* Centrar verticalmente */
+    gap: 12px;                           /* Espacio entre elementos */
+    
+    /* 📍 POSICIONAMIENTO */
+    position: relative;                   /* Para z-index */
+    z-index: 2;                          /* Sobre efectos de fondo */
 }
 
+/* 🎨 ICONOS EN TÍTULOS CON COLOR AZUL */
 .icon {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
+    width: 24px;                         /* Ancho del icono */
+    height: 24px;                        /* Alto del icono */
+    fill: var(--info-color);             /* Azul que complementa el celeste */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* Sombra sutil */
 }
 
 /* ========================================
-   INDICADORES DE ESTADO
+   🚥 INDICADORES DE ESTADO VISIBLES
+   ========================================
+   Círculos de colores optimizados para fondo celeste
 ======================================== */
 .status-indicator {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-left: 10px;
-    animation: pulse 2s infinite;
+    display: inline-block;               /* Elemento en línea */
+    width: 14px;                        /* Ancho del círculo (más grande) */
+    height: 14px;                       /* Alto del círculo */
+    border-radius: 50%;                 /* Círculo perfecto */
+    margin-left: 12px;                  /* Espacio a la izquierda */
+    
+    /* 🎭 ANIMACIÓN PULSANTE */
+    animation: gentlePulse 3s ease-in-out infinite; /* Pulso suave */
+    
+    /* 🌟 BORDE PARA MEJOR VISIBILIDAD */
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Borde blanco */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15); /* Sombra para definición */
 }
 
+/* 🟢 ESTADO ACTIVO (VERDE VISIBLE) */
 .status-active {
-    background: #00ff88;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    background: var(--success-color);    /* Verde amigable */
+    box-shadow: 0 0 12px rgba(56, 161, 105, 0.5); /* Sombra verde */
 }
 
+/* 🔴 ESTADO INACTIVO (ROJO VISIBLE) */
 .status-inactive {
-    background: #ff4757;
+    background: var(--error-color);      /* Rojo visible */
+    box-shadow: 0 0 12px rgba(229, 62, 62, 0.5); /* Sombra roja */
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.7; }
+/* 💓 ANIMACIÓN DE PULSO SUAVE */
+@keyframes gentlePulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+    50% { 
+        transform: scale(1.1); 
+        opacity: 0.8; 
+    }
 }
 
 /* ========================================
-   INFORMACIÓN DE UBICACIÓN
+   📋 INFORMACIÓN DE UBICACIÓN LEGIBLE
+   ========================================
+   Grid optimizado para máxima legibilidad
 ======================================== */
 .location-info {
-    display: grid;
-    gap: 15px;
+    display: grid;                       /* Grid layout */
+    gap: 16px;                          /* Espacio entre items */
+    position: relative;                  /* Para z-index */
+    z-index: 2;                         /* Sobre efectos de fondo */
 }
 
+/* 📝 ITEMS DE INFORMACIÓN CON BUEN CONTRASTE */
 .info-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    /* 📐 LAYOUT */
+    display: flex;                       /* Flexbox layout */
+    justify-content: space-between;      /* Espacio entre elementos */
+    align-items: center;                 /* Centrar verticalmente */
+    
+    /* 📏 ESPACIADO */
+    padding: 18px 22px;                 /* Padding más generoso */
+    
+    /* 🎨 FONDO CON BUEN CONTRASTE */
+    background: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+    border-radius: var(--border-radius-md); /* Bordes redondeados */
+    border: 1px solid rgba(255, 255, 255, 0.8); /* Borde blanco visible */
+    
+    /* 🎭 TRANSICIONES */
+    transition: all 0.3s ease;          /* Transición suave */
+    
+    /* 🌟 SOMBRA PARA DEFINICIÓN */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil */
 }
 
+/* ✨ EFECTO HOVER EN INFO ITEMS */
 .info-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.8); /* Fondo más brillante */
+    transform: translateX(4px);          /* Mover ligeramente a la derecha */
+    border-color: var(--celeste-accent); /* Borde celeste en hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* Sombra más fuerte */
 }
 
+/* 🏷️ ETIQUETAS CON CONTRASTE ÓPTIMO */
 .info-label {
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-weight: 600;                    /* Negrita para visibilidad */
+    color: var(--text-secondary);       /* Gris azulado oscuro */
+    font-size: 0.9rem;                  /* Tamaño apropiado */
+    letter-spacing: 0.3px;              /* Espaciado de letras */
 }
 
+/* 💯 VALORES CON MÁXIMO CONTRASTE */
 .info-value {
-    font-weight: 600;
-    font-family: 'Courier New', monospace;
+    font-weight: 700;                    /* Muy negrita para destacar */
+    color: var(--text-primary);         /* Azul marino - máximo contraste */
+    font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace; /* Fuente monoespaciada */
+    font-size: 0.95rem;                 /* Tamaño apropiado */
+    text-align: right;                  /* Alinear a la derecha */
+    background: rgba(26, 54, 93, 0.05); /* Fondo azul muy sutil */
+    padding: 4px 8px;                   /* Padding pequeño */
+    border-radius: 6px;                 /* Bordes redondeados pequeños */
 }
 
 /* ========================================
-   CONTENEDOR DEL MAPA
+   🗺️ CONTENEDOR DEL MAPA OPTIMIZADO
+   ========================================
+   Wrapper del mapa con bordes definidos
 ======================================== */
 .map-container {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 400px;
-    box-shadow: var(--shadow);
+    position: relative;                  /* Para elementos absolutos hijos */
+    border-radius: var(--border-radius-lg); /* Bordes redondeados */
+    overflow: hidden;                    /* Ocultar desbordamientos */
+    height: 420px;                      /* Altura fija generosa */
+    
+    /* 🌟 SOMBRAS Y BORDES DEFINIDOS */
+    box-shadow: var(--shadow-medium);   /* Sombra media */
+    border: 3px solid rgba(255, 255, 255, 0.8); /* Borde blanco grueso */
+    
+    /* 🎭 TRANSICIONES */
+    transition: all 0.3s ease;          /* Transición suave */
 }
 
+/* ✨ EFECTO HOVER EN MAPA */
+.map-container:hover {
+    box-shadow: var(--shadow-strong);   /* Sombra más fuerte */
+    border-color: var(--celeste-accent); /* Borde celeste en hover */
+    transform: scale(1.01);             /* Crecer ligeramente */
+}
+
+/* 🌍 MAPA LEAFLET CON FILTROS SUAVES */
 #map {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    width: 100%;                        /* Ancho completo */
+    height: 100%;                       /* Alto completo */
+    z-index: 1;                         /* Z-index base */
+    
+    /* 🎨 FILTROS PARA ARMONIZAR CON CELESTE */
+    filter: 
+        contrast(1.08)                  /* Contraste aumentado */
+        saturate(0.85)                  /* Saturación reducida */
+        brightness(1.03)                /* Brillo ligeramente aumentado */
+        hue-rotate(-5deg);              /* Rotación hacia azul */
 }
 
 /* ========================================
-   BOTONES DE CONTROL
+   🎮 BOTONES AMIGABLES Y LEGIBLES
+   ========================================
+   Botones optimizados para fondo celeste
 ======================================== */
 .controls {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    /* 📐 LAYOUT */
+    display: flex;                       /* Flexbox layout */
+    gap: 16px;                          /* Espacio entre botones */
+    justify-content: center;             /* Centrar horizontalmente */
+    flex-wrap: wrap;                     /* Permitir wrap en pantallas pequeñas */
+    
+    /* 📏 ESPACIADO */
+    margin-top: 30px;                   /* Espacio superior */
+    
+    /* 🎭 ANIMACIÓN */
+    animation: smoothFadeInUp 1s ease-out 0.9s both; /* Delay mayor */
 }
 
+/* 🔘 BOTONES BASE CON EXCELENTE CONTRASTE */
 .btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    /* 📏 TAMAÑO Y ESPACIADO */
+    padding: 16px 32px;                 /* Padding generoso */
+    min-width: 180px;                   /* Ancho mínimo para consistencia */
+    
+    /* 🎨 ESTILO BÁSICO */
+    border: 2px solid transparent;      /* Borde transparente por defecto */
+    border-radius: var(--border-radius-xl); /* Bordes muy redondeados */
+    
+    /* 📝 TEXTO LEGIBLE */
+    font-weight: 700;                   /* Negrita para visibilidad */
+    font-size: 0.95rem;                 /* Tamaño legible */
+    text-transform: none;               /* Sin transformación de texto */
+    letter-spacing: 0.5px;              /* Espaciado de letras */
+    
+    /* 🖱️ CURSOR */
+    cursor: pointer;                    /* Cursor de puntero */
+    
+    /* 🎭 TRANSICIONES */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave */
+    
+    /* 📍 POSICIONAMIENTO */
+    position: relative;                 /* Para pseudo-elementos */
+    overflow: hidden;                   /* Ocultar desbordamientos */
+    
+    /* 🌟 SOMBRA BASE */
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); /* Sombra visible */
+    
+    /* 🚫 SELECCIÓN DE TEXTO */
+    user-select: none;                  /* No seleccionar texto */
 }
 
-/* EFECTO DE BRILLO EN BOTONES */
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+/* ✨ EFECTO HOVER GENERAL EN BOTONES */
+.btn:hover {
+    transform: translateY(-3px) scale(1.03); /* Subir y crecer */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18); /* Sombra más fuerte */
 }
 
-.btn:hover::before {
-    left: 100%;
+/* 🎯 EFECTO ACTIVO (CUANDO SE HACE CLICK) */
+.btn:active {
+    transform: translateY(-1px) scale(1.01); /* Menos elevación */
+    transition: all 0.1s ease;          /* Transición rápida */
 }
 
-/* ESTILOS DE BOTONES POR TIPO */
+/* 🔵 BOTÓN PRIMARIO (Azul complementario) */
 .btn-primary {
-    background: var(--primary-gradient);
-    color: white;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    background: var(--info-color);      /* Azul que complementa celeste */
+    color: var(--text-white);           /* Texto blanco */
+    border-color: rgba(49, 130, 206, 0.3); /* Borde azul sutil */
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    background: #2C5282;               /* Azul más oscuro en hover */
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3); /* Sombra azul */
+    border-color: rgba(49, 130, 206, 0.5); /* Borde más visible */
 }
 
+/* 🌸 BOTÓN SECUNDARIO (Blanco con borde) */
 .btn-secondary {
-    background: var(--secondary-gradient);
-    color: white;
-    box-shadow: 0 4px 20px rgba(240, 147, 251, 0.4);
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    color: var(--text-primary);         /* Texto azul marino */
+    border-color: var(--celeste-accent); /* Borde celeste */
 }
 
 .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(240, 147, 251, 0.6);
+    background: rgba(255, 255, 255, 1);  /* Fondo blanco sólido */
+    border-color: var(--celeste-deep);   /* Borde celeste más fuerte */
+    box-shadow: 0 8px 25px rgba(179, 224, 255, 0.4); /* Sombra celeste */
 }
 
+/* 🌿 BOTÓN ACCENT (Verde amigable) */
 .btn-accent {
-    background: var(--accent-gradient);
-    color: white;
-    box-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
+    background: var(--success-color);   /* Verde amigable */
+    color: var(--text-white);           /* Texto blanco */
+    border-color: rgba(56, 161, 105, 0.3); /* Borde verde sutil */
 }
 
 .btn-accent:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(79, 172, 254, 0.6);
+    background: #2F855A;               /* Verde más oscuro */
+    box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3); /* Sombra verde */
+    border-color: rgba(56, 161, 105, 0.5); /* Borde más visible */
 }
 
 /* ========================================
-   GRID DE ESTADÍSTICAS
+   📊 ESTADÍSTICAS CON BUEN CONTRASTE
+   ========================================
+   Cards de métricas optimizadas para legibilidad
 ======================================== */
 .stats-grid {
+    /* 📐 LAYOUT GRID RESPONSIVE */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas auto-ajustables */
+    gap: 20px;                          /* Espacio entre cards */
+    
+    /* 📏 ESPACIADO */
+    margin-top: 40px;                   /* Espacio superior */
+    
+    /* 🎭 ANIMACIÓN */
+    animation: smoothFadeInUp 1s ease-out 1.2s both; /* Delay máximo */
 }
 
+/* 📈 CARDS DE ESTADÍSTICAS CON FONDO BLANCO */
 .stat-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
+    /* 🌊 FONDO BLANCO SEMITRANSPARENTE */
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco más opaco */
+    backdrop-filter: blur(10px);         /* Desenfoque sutil */
+    -webkit-backdrop-filter: blur(10px); /* Soporte Safari */
+    
+    /* 🎨 BORDES Y FORMAS */
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-md);
+    
+    /* 📏 ESPACIADO */
+    padding: 24px 20px;                 /* Padding vertical mayor */
+    text-align: center;                 /* Centrar contenido */
+    
+    /* 🎭 TRANSICIONES */
     transition: all 0.3s ease;
+    
+    /* 🌟 SOMBRA PARA DEFINICIÓN */
+    box-shadow: var(--shadow-soft);     /* Sombra suave */
 }
 
+/* ✨ EFECTO HOVER EN STAT CARDS */
 .stat-card:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-6px) scale(1.03); /* Subir y crecer */
+    background: rgba(255, 255, 255, 0.95); /* Fondo más opaco */
+    box-shadow: var(--shadow-medium);   /* Sombra más fuerte */
+    border-color: var(--celeste-accent); /* Borde celeste */
 }
 
+/* 🔢 NÚMEROS DE ESTADÍSTICAS CON CONTRASTE */
 .stat-number {
-    font-size: 2rem;
-    font-weight: 800;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 2.4rem;                  /* Tamaño grande */
+    font-weight: 800;                   /* Muy negrita */
+    margin-bottom: 8px;                 /* Espacio inferior */
+    color: var(--text-primary);         /* Color azul marino */
+    
+    /* 📐 ALTURA DE LÍNEA */
+    line-height: 1.2;                   /* Altura de línea ajustada */
 }
 
+/* 🏷️ ETIQUETAS DE ESTADÍSTICAS LEGIBLES */
 .stat-label {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 5px;
+    color: var(--text-secondary);       /* Gris azulado oscuro */
+    font-size: 0.85rem;                 /* Tamaño pequeño */
+    font-weight: 600;                   /* Semi-negrita */
+    text-transform: uppercase;          /* Mayúsculas */
+    letter-spacing: 0.5px;              /* Espaciado de letras */
 }
 
 /* ========================================
-   ESTADOS DE CARGA Y ERRORES
+   ⏳ ESTADOS DE CARGA Y ERRORES VISIBLES
+   ========================================
+   Componentes optimizados para fondo celeste
 ======================================== */
+
+/* 🔄 CONTENEDOR DE CARGA */
 .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
+    display: flex;                      /* Flexbox layout */
+    align-items: center;                /* Centrar verticalmente */
+    justify-content: center;            /* Centrar horizontalmente */
+    gap: 12px;                         /* Espacio entre elementos */
+    padding: 24px;                     /* Padding generoso */
+    color: var(--text-secondary);      /* Color visible */
+    background: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+    border-radius: var(--border-radius-md); /* Bordes redondeados */
 }
 
+/* ⭕ SPINNER DE CARGA VISIBLE */
 .spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+    width: 24px;                       /* Ancho del spinner */
+    height: 24px;                      /* Alto del spinner */
+    border: 3px solid rgba(26, 54, 93, 0.2); /* Borde base azul */
+    border-top: 3px solid var(--info-color); /* Borde superior azul fuerte */
+    border-radius: 50%;                /* Círculo perfecto */
+    animation: smoothSpin 1s linear infinite; /* Rotación suave */
 }
 
-@keyframes spin {
+/* 🌀 ANIMACIÓN DE ROTACIÓN SUAVE */
+@keyframes smoothSpin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
+/* ❌ MENSAJES DE ERROR VISIBLES */
 .error {
-    color: #ff4757;
-    background: rgba(255, 71, 87, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 71, 87, 0.3);
-    text-align: center;
+    color: var(--error-color);         /* Rojo visible */
+    background: rgba(229, 62, 62, 0.1); /* Fondo rojo translúcido */
+    padding: 18px 22px;                /* Padding generoso */
+    border-radius: var(--border-radius-md); /* Bordes redondeados */
+    border: 2px solid rgba(229, 62, 62, 0.3); /* Borde rojo visible */
+    text-align: center;                /* Centrar texto */
+    font-weight: 600;                  /* Semi-negrita */
+    font-size: 0.9rem;                 /* Tamaño apropiado */
 }
 
 /* ========================================
-   PARTÍCULAS FLOTANTES DE FONDO
+   ✨ PARTÍCULAS FLOTANTES CELESTES
+   ========================================
+   Sistema de partículas armonioso con fondo celeste
 ======================================== */
+
+/* 🌟 CONTENEDOR DE PARTÍCULAS */
 .floating-particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    position: fixed;                    /* Posición fija en la ventana */
+    top: 0;                            /* Arriba */
+    left: 0;                           /* Izquierda */
+    width: 100%;                       /* Ancho completo */
+    height: 100%;                      /* Alto completo */
+    pointer-events: none;              /* No interferir con clicks */
+    z-index: -1;                       /* Detrás de todo */
+    overflow: hidden;                  /* Ocultar desbordamientos */
 }
 
+/* ⭐ PARTÍCULAS CELESTES SUTILES */
 .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: float 20s infinite linear;
+    position: absolute;                 /* Posición absoluta */
+    width: 4px;                        /* Ancho de partícula */
+    height: 4px;                       /* Alto de partícula */
+    background: rgba(153, 214, 255, 0.6); /* Celeste profundo translúcido */
+    border-radius: 50%;                /* Círculo perfecto */
+    animation: gentleFloat 30s infinite linear; /* Animación muy lenta */
+    
+    /* 🌟 SOMBRA CELESTE SUTIL */
+    box-shadow: 0 0 6px rgba(153, 214, 255, 0.4); /* Brillo celeste */
 }
 
-@keyframes float {
+/* 🎈 ANIMACIÓN DE FLOTACIÓN ULTRA SUAVE */
+@keyframes gentleFloat {
     0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(100vh) rotate(0deg) scale(0); /* Empezar abajo, invisible */
         opacity: 0;
     }
-    10% {
-        opacity: 1;
+    5% {
+        opacity: 1;                     /* Aparecer gradualmente */
+        transform: translateY(95vh) rotate(18deg) scale(1); /* Crecer y rotar */
     }
-    90% {
-        opacity: 1;
+    95% {
+        opacity: 1;                     /* Mantenerse visible */
+        transform: translateY(5vh) rotate(342deg) scale(1); /* Seguir flotando */
     }
     100% {
-        transform: translateY(-100px) rotate(360deg);
+        transform: translateY(-5vh) rotate(360deg) scale(0); /* Desaparecer arriba */
         opacity: 0;
     }
 }
+
+/* ========================================
+   📱 RESPONSIVE MEJORADO PARA CELESTE
+   ========================================
+   Ajustes específicos para diferentes tamaños
+======================================== */
+
+/* 📱 MÓVILES PEQUEÑOS */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;                  /* Padding menor */
+    }
+    
+    .glass-card {
+        padding: 24px 20px;             /* Padding menor en cards */
+    }
+    
+    .btn {
+        padding: 14px 24px;             /* Botones más pequeños */
+        min-width: 160px;               /* Ancho mínimo menor */
+        font-size: 0.9rem;              /* Texto menor */
+    }
+    
+    .controls {
+        gap: 12px;                      /* Menor espacio entre botones */
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Columnas más pequeñas */
+        gap: 15px;                      /* Menor espacio */
+    }
+    
+    .map-container {
+        height: 280px;                  /* Mapa más pequeño */
+    }
+    
+    .info-item {
+        padding: 14px 18px;             /* Padding menor */
+        flex-direction: column;         /* Apilar en móvil */
+        align-items: flex-start;        /* Alinear a la izquierda */
+        gap: 8px;                      /* Espacio entre label y value */
+    }
+    
+    .info-value {
+        text-align: left;               /* Alinear a la izquierda en móvil */
+    }
+}
+
+/* 🖥️ PANTALLAS MUY GRANDES */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;              /* Mayor ancho máximo */
+        padding: 40px;                  /* Mayor padding */
+    }
+    
+    .logo {
+        font-size: 4.2rem;              /* Logo más grande */
+    }
+    
+    .glass-card {
+        padding: 40px;                  /* Mayor padding en cards */
+    }
+}
+
+/* ========================================
+   🔧 UTILIDADES Y ACCESIBILIDAD
+   ========================================
+   Clases auxiliares y mejoras de accesibilidad
+======================================== */
+
+/* 🎯 FOCUS PARA NAVEGACIÓN POR TECLADO */
+.btn:focus,
+.info-item:focus,
+.glass-card:focus {
+    outline: 3px solid var(--info-color); /* Contorno azul visible */
+    outline-offset: 3px;                /* Separación del contorno */
+}
+
+/* 👆 MEJORAR ÁREA DE TOQUE EN MÓVILES */
+@media (pointer: coarse) {
+    .btn {
+        min-height: 48px;               /* Altura mínima táctil recomendada */
+        padding: 16px 28px;             /* Padding mayor para táctil */
+    }
+    
+    .info-item {
+        min-height: 48px;               /* Altura mínima táctil */
+    }
+}
+
+/* 🙈 UTILIDADES DE VISIBILIDAD */
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 📏 UTILIDADES DE ESPACIADO */
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* 🎨 UTILIDADES DE COLOR */
+.text-success { color: var(--success-color); }
+.text-error { color: var(--error-color); }
+.text-warning { color: var(--warning-color); }
+.text-info { color: var(--info-color); }
+
+/* 🎭 RESPETAR PREFERENCIAS DE ANIMACIÓN */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;   /* Animaciones casi instantáneas */
+        animation-iteration-count: 1 !important; /* Solo una iteración */
+        transition-duration: 0.01ms !important;  /* Transiciones casi instantáneas */
+    }
+    
+    .floating-particles {
+        display: none;                  /* Ocultar partículas para usuarios sensibles */
+    }
+}
+
+/* ========================================
+   🎉 RESUMEN DEL CSS CELESTE OPTIMIZADO
+   ========================================
+   
+   🌊 CARACTERÍSTICAS PRINCIPALES:
+   
+   ✅ FONDO CELESTE PASTEL RELAJANTE
+   - Color base: #E6F3FF (celeste suave)
+   - No agresivo ni distractor
+   - Profesional y moderno
+   
+   ✅ MÁXIMA LEGIBILIDAD
+   - Texto azul marino (#1A365D) con alto contraste
+   - Fondos blancos semitransparentes en cards
+   - Bordes definidos para separación visual
+   
+   ✅ GLASSMORPHISM OPTIMIZADO
+   - Efectos de vidrio adaptados al fondo celeste
+   - Transparencias balanceadas
+   - Sombras sutiles pero visibles
+   
+   ✅ COLORES ARMONIOSOS
+   - Paleta complementaria al celeste
+   - Estados de color claramente visibles
+   - Gradientes suaves y profesionales
+   
+   ✅ ACCESIBILIDAD COMPLETA
+   - Focus states para navegación por teclado
+   - Áreas de toque optimizadas para móvil
+   - Respeto por preferencias de movimiento
+   
+   ✅ RESPONSIVE PERFECTO
+   - Adaptación fluida a todos los dispositivos
+   - Tipografía escalable
+   - Layout optimizado por tamaño
+   
+   🎯 RESULTADO FINAL:
+   Una aplicación visualmente atractiva, profesional
+   y completamente legible con fondo celeste pastel
+   que no cansa la vista y facilita la lectura.
+   
+======================================== */
